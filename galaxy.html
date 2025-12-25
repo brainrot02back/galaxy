@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Galaxy OGFN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'BBH Hegarty', sans-serif;
+}
+body {
+    overflow-x: hidden;
+    color: #f2e9ff;
+    background: radial-gradient(circle at center, #1a082b 0%, #090412 100%);
+}
+#starCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    background: radial-gradient(circle at center, #0a022b 0%, #000 100%);
+}
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
+nav button {
+    background: none;
+    border: none;
+    color: #c77dff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding-bottom: 6px;
+    transition: opacity 0.2s;
+}
+nav button:hover { opacity: 0.8; }
+nav button.active { border-bottom: 2px solid #9d4edd; }
+.sections-container {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+    min-height: 500px;
+    z-index: 1;
+}
+.section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.hero {
+    text-align: center;
+    margin-top: 40px;
+}
+.hero h1 {
+    font-size: 4rem;
+    color: #c77dff;
+}
+.hero p {
+    opacity: 0.8;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+.card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 22px;
+    padding: 40px;
+    margin-top: 45px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.card h2 { color: #e0aaff; margin-bottom: 15px; }
+.card p { line-height: 1.7; opacity: 0.9; }
+.step { margin-bottom: 18px; }
+.step a {
+    color: #9d4edd;
+    text-decoration: none;
+}
+.step a:hover { text-decoration: underline; }
+.status-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #4caf50;
+    box-shadow: 0 0 12px #4caf50;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 8px #4caf50; }
+    50% { box-shadow: 0 0 16px #4caf50; }
+    100% { box-shadow: 0 0 8px #4caf50; }
+}
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-top: 25px;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border: none;
+}
+footer {
+    text-align: center;
+    opacity: 0.5;
+    padding: 40px;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+</style>
+</head>
+<body>
+<canvas id="starCanvas"></canvas>
+<nav>
+    <button class="active" onclick="show('home', this)">Home</button>
+    <button onclick="show('setup', this)">Setup</button>
+    <button onclick="show('status', this)">Status</button>
+    <button onclick="show('video', this)">Video Tutorial</button>
+</nav>
+<div class="sections-container">
+    <div id="home" class="section active">
+        <div class="hero">
+            <h1>Galaxy OGFN</h1>
+            <p>Chapter 2 Season 2 • Fortnite 12.61</p>
+        </div>
+        <div class="card">
+            <h2>About Galaxy</h2>
+            <p>Galaxy is a custom OGFN project hosted on Fortnite version <strong>12.61</strong>, recreating Chapter 2 Season 2 with a clean, stable, and nostalgic experience.</p>
+        </div>
+    </div>
+    <div id="setup" class="section">
+        <div class="card">
+            <h2>Setup Guide</h2>
+            <div class="step">
+                <strong>Launcher:</strong>
+                <a href="https://github.com/moonlightrblx/ogfn-dll/releases/download/lancher/net9.0.rar" target="_blank">Download</a>
+            </div>
+            <div class="step">
+                <strong>.NET 9.0:</strong>
+                <a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.308-windows-x64-installer" target="_blank">Installer</a>
+            </div>
+            <div class="step">
+                <strong>Fortnite 12.61:</strong>
+                <a href="https://public.simplyblk.xyz/12.61.zip" target="_blank">Download</a>
+            </div>
+            <div class="step">
+                <strong>Radmin VPN:</strong>
+                <a href="https://www.radmin-vpn.com/" target="_blank">Website</a>
+            </div>
+            <p style="margin-top:20px; opacity:0.8;">Select your 12.61 folder in the launcher, connect to Radmin VPN, and launch Galaxy.</p>
+        </div>
+    </div>
+    <div id="status" class="section">
+        <div class="card">
+            <h2>Server Status</h2>
+            <div class="status-box">
+                <div class="dot"></div>
+                <strong>Online</strong>
+            </div>
+            <p style="margin-top:15px; opacity:0.85;">Galaxy OGFN servers are running normally. If you experience issues, restart your launcher or reconnect to Radmin VPN.</p>
+        </div>
+    </div>
+    <div id="video" class="section">
+        <div class="card">
+            <h2>Video Tutorial</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/fui5kAjD-Zs" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    © 2025 Galaxy OGFN • Not affiliated with Epic Games
+</footer>
+<script>
+function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+}
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+const stars = [];
+const STAR_COUNT = 150;
+function random(min, max) { return Math.random() * (max - min) + min; }
+class Star {
+    constructor() { this.reset(); }
+    reset() { this.x = random(0, width); this.y = random(0, height); this.z = random(0.1, 1); this.len = random(1, 3); this.speed = this.z * 1.5; }
+    update() { this.x += this.speed; this.y += this.speed * 0.3; if(this.x > width || this.y > height) this.reset(); }
+    draw() { ctx.strokeStyle = `rgba(255,255,255,${this.z})`; ctx.lineWidth = this.z; ctx.beginPath(); ctx.moveTo(this.x, this.y); ctx.lineTo(this.x - this.speed*2, this.y - this.speed*2*0.3); ctx.stroke(); }
+}
+for(let i=0;i<STAR_COUNT;i++) stars.push(new Star());
+function animate() { ctx.fillStyle = 'rgba(10,2,43,0.3)'; ctx.fillRect(0,0,width,height); for(let star of stars) { star.update(); star.draw(); } requestAnimationFrame(animate); }
+animate();
+window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+</script>
+</body>
+</html>
